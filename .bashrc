@@ -119,10 +119,6 @@ eval "$(rbenv init -)"
 source ~/.git-prompt.sh
 PS1='[\u@\h \W$(__git_ps1 " (%s)")]\n$ '
 
-alias refresh='source ~/.bashrc'
-alias gs='git status'
-alias glog='git log --oneline --graph'
-
 COLOR_RED="\033[0;31m"
 COLOR_YELLOW="\033[0;33m"
 COLOR_GREEN="\033[0;32m"
@@ -160,3 +156,12 @@ function git_branch {
 
 export PS1="\[\e[01;32m\]\h\[\e[0m\]\[\e[01;37m\]@\[\e[0m\]\[\e[01;31m\]\u\[\e[0m\]\[\e[01;37m\]:\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[00;33m\]\w\[\e[0m\]\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\$(git_color)\]\$(git_branch)\[\033[0m\]\n$ "
 export CLICOLOR=1
+
+# Aliases
+alias refresh='source ~/.bashrc'
+alias gs='git status'
+alias glog='git log --oneline --graph'
+alias gd='git diff'
+alias gc='git checkout -'
+alias gpush='git push origin HEAD'
+alias gpull='git pull origin HEAD'
