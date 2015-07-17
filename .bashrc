@@ -171,7 +171,7 @@ alias gd='git diff'
 alias gc='git checkout -'
 alias gpush='git push origin HEAD'
 alias gpull='git pull origin HEAD'
-
+alias trim='sudo fstrim -v /'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
