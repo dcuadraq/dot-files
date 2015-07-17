@@ -44,7 +44,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 autocmd Filetype gitcommit setlocal spell textwidth=72 "spell checking and automatic wrapping at the recommended 72 columns to you commit messages
 
-" vim-plug
+" vim-pluG
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
