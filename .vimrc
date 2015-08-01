@@ -1,3 +1,13 @@
+" Shorcuts to remember
+" gv = previous selection
+" zz = sets current line in the middle of screen
+" z<Enter> = sets current line at top of screen
+" zt = sets current line at top of screen
+" zb = sets current line at bottom of screen
+
+set cursorcolumn
+set cursorline
+
 set guioptions-=L
 set guioptions=-l
 
@@ -10,7 +20,7 @@ set relativenumber
 
 set colorcolumn=100 " highlight column #
 
-:colorscheme slate
+set background=dark
 
 "set directory=~/tmp
 "set backup=~/tmp
@@ -44,7 +54,55 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 autocmd Filetype gitcommit setlocal spell textwidth=72 "spell checking and automatic wrapping at the recommended 72 columns to you commit messages
 
-" vim-pluG
+
+" Jump to the next or previous line that has the same level or a lower
+" level of indentation than the current line.
+"
+" exclusive (bool): true: Motion is exclusive
+" false: Motion is inclusive
+" fwd (bool): true: Go to next line
+" false: Go to previous line
+" lowerlevel (bool): true: Go to line with lower indentation level
+" false: Go to line with the same indentation level
+" skipblanks (bool): true: Skip blank lines
+" false: Don't skip blank lines
+function! NextIndent(exclusive, fwd, lowerlevel, skipblanks)
+  let line = line('.')
+  let column = col('.')
+  let lastline = line('$')
+  let indent = indent(line)
+  let stepvalue = a:fwd ? 1 : -1
+  while (line > 0 && line <= lastline)
+    let line = line + stepvalue
+    if ( ! a:lowerlevel && indent(line) == indent ||
+          \ a:lowerlevel && indent(line) < indent)
+      if (! a:skipblanks || strlen(getline(line)) > 0)
+        if (a:exclusive)
+          let line = line - stepvalue
+        endif
+        exe line
+        exe "normal " column . "|"
+        return
+      endif
+    endif
+  endwhile
+endfunction
+
+" Moving back and forth between lines of same or lower indentation.
+nnoremap <silent> [l :call NextIndent(0, 0, 0, 1)<CR>
+nnoremap <silent> ]l :call NextIndent(0, 1, 0, 1)<CR>
+nnoremap <silent> [L :call NextIndent(0, 0, 1, 1)<CR>
+nnoremap <silent> ]L :call NextIndent(0, 1, 1, 1)<CR>
+vnoremap <silent> [l <Esc>:call NextIndent(0, 0, 0, 1)<CR>m'gv''
+vnoremap <silent> ]l <Esc>:call NextIndent(0, 1, 0, 1)<CR>m'gv''
+vnoremap <silent> [L <Esc>:call NextIndent(0, 0, 1, 1)<CR>m'gv''
+vnoremap <silent> ]L <Esc>:call NextIndent(0, 1, 1, 1)<CR>m'gv''
+onoremap <silent> [l :call NextIndent(0, 0, 0, 1)<CR>
+onoremap <silent> ]l :call NextIndent(0, 1, 0, 1)<CR>
+onoremap <silent> [L :call NextIndent(1, 0, 1, 1)<CR>
+onoremap <silent> ]L :call NextIndent(1, 1, 1, 1)<CR>
+
+
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
@@ -73,4 +131,48 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Hard time
 Plug 'https://github.com/takac/vim-hardtime.git'
 
+" Solarized colorschemes
+Plug 'altercation/vim-colors-solarized'
+
+" Display identtation
+Plug 'https://github.com/nathanaelkane/vim-indent-guides'
+
+" Monokai colorscheme
+Plug 'https://github.com/tomasr/molokai'
+
+" Dependecy for unite, go to its folder and run 'make'
+Plug 'Shougo/vimproc.vim'
+" File searcher, requires ag the-silver-searcher installed
+Plug 'Shougo/unite.vim'
+
+" ag for vim
+Plug 'rking/ag.vim'
 call plug#end()
+
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+
+filetype plugin indent on
+let g:hardtime_default_on = 1 " hard time from beginning
+
+:colorscheme molokai
+
+
+" Unite configuration
+let g:unite_source_history_yank_enable = 1
+try
+  let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
+  call unite#filters#matcher_default#use(['matcher_fuzzy'])
+catch
+endtry
+" search a file in the filetree
+nnoremap <space><space> :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
+" reset not it is <C-l> normally
+:nnoremap <space>r <Plug>(unite_restart)
+
+
+" ag configuration
+" --- type ° to search the word in all files in the current dir
+nmap | :Ag <c-r>=expand("<cword>")<cr><cr>
+nnoremap <space>/ :Ag
