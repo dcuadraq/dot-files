@@ -147,6 +147,9 @@ Plug 'Shougo/unite.vim'
 
 " ag for vim
 Plug 'rking/ag.vim'
+
+" Search and replace
+Plug 'https://github.com/yegappan/greplace'
 call plug#end()
 
 let g:indent_guides_auto_colors = 0
@@ -176,3 +179,11 @@ nnoremap <space><space> :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
 " --- type ° to search the word in all files in the current dir
 nmap | :Ag <c-r>=expand("<cword>")<cr><cr>
 nnoremap <space>/ :Ag
+
+" MOVE CODE UP AND DOWN
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
