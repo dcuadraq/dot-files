@@ -8,6 +8,11 @@ case $- in
       *) return;;
 esac
 
+# Homebrew autocomplete for git
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+. $(brew --prefix)/etc/bash_completion
+fi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -172,8 +177,12 @@ alias gd='git diff'
 alias gc='git checkout -'
 alias gpush='git push origin HEAD'
 alias gpull='git pull origin HEAD'
+alias be='bundle exec'
+alias tbe='time bundle exec'
 
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"

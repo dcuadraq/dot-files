@@ -7,6 +7,7 @@
 
 set cursorcolumn
 set cursorline
+set ruler
 
 set guioptions-=L
 set guioptions=-l
@@ -38,22 +39,24 @@ set lazyredraw " buffer screen updates instead of updating all the time
 :set tabstop=2 " soft tab = 2 spaces
 :set shiftwidth=2 " > identantion
 
+" sets vim update time to a higher frecuency than default (4s) for vim-gitgutter
+set updatetime=250
+
 " Use numbers to pick the tab you want (In OS X replace M for D)
-map <silent> <M-0> :tabn 0<cr>
-map <silent> <M-1> :tabn 1<cr>
-map <silent> <M-2> :tabn 2<cr>
-map <silent> <M-3> :tabn 3<cr>
-map <silent> <M-4> :tabn 4<cr>
-map <silent> <M-5> :tabn 5<cr>
-map <silent> <M-6> :tabn 6<cr>
-map <silent> <M-7> :tabn 7<cr>
-map <silent> <M-8> :tabn 8<cr>
-map <silent> <M-9> :tabn 9<cr>
+map <silent> <D-0> :tabn 0<cr>
+map <silent> <D-1> :tabn 1<cr>
+map <silent> <D-2> :tabn 2<cr>
+map <silent> <D-3> :tabn 3<cr>
+map <silent> <D-4> :tabn 4<cr>
+map <silent> <D-5> :tabn 5<cr>
+map <silent> <D-6> :tabn 6<cr>
+map <silent> <D-7> :tabn 7<cr>
+map <silent> <D-8> :tabn 8<cr>
+map <silent> <D-9> :tabn 9<cr>
 
 autocmd BufWritePre * :%s/\s\+$//e
 
 autocmd Filetype gitcommit setlocal spell textwidth=72 "spell checking and automatic wrapping at the recommended 72 columns to you commit messages
-
 
 " Jump to the next or previous line that has the same level or a lower
 " level of indentation than the current line.
@@ -104,6 +107,8 @@ onoremap <silent> ]L :call NextIndent(1, 1, 1, 1)<CR>
 
 
 call plug#begin('~/.vim/plugged')
+" Comment
+Plug 'scrooloose/nerdcommenter'
 
 " Make sure you use single quotes
 " Plug 'junegunn/seoul256.vim'
@@ -113,7 +118,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Using git URL
@@ -129,7 +134,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plug '~/my-prototype-plugin'
 
 " Hard time
-Plug 'https://github.com/takac/vim-hardtime.git'
+" Plug 'https://github.com/takac/vim-hardtime.git'
 
 " Solarized colorschemes
 Plug 'altercation/vim-colors-solarized'
@@ -146,11 +151,44 @@ Plug 'Shougo/vimproc.vim'
 Plug 'Shougo/unite.vim'
 
 " ag for vim
-Plug 'rking/ag.vim'
+"Plug 'rking/ag.vim'
 
 " Search and replace
 Plug 'https://github.com/yegappan/greplace'
+
+Plug 'tpope/vim-fugitive'
+
+" Fuzzi finder
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install' }
+Plug 'junegunn/fzf.vim'
+
+" Cursor on terminal
+Plug 'https://github.com/jszakmeister/vim-togglecursor'
+
+" Marks modified lines from git
+Plug 'https://github.com/airblade/vim-gitgutter'
+
+" Sintaxis linter
+"Plug 'https://github.com/scrooloose/syntastic'
 call plug#end()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin mapping - scrooloose/nerdcommenter
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Trigger commenting on every mode
+imap <leader>/ <esc><plug>NERDCommenterToggle<CR>i
+nmap <leader>/ <plug>NERDCommenterToggle<CR>
+vmap <leader>/ <plug>NERDCommenterToggle
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin mapping - junegunn/fzf && junegunn/fzf-vim
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" List and select from file list
+map <leader><tab> :Files<cr>
+
 
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
@@ -160,7 +198,6 @@ filetype plugin indent on
 let g:hardtime_default_on = 1 " hard time from beginning
 
 :colorscheme molokai
-
 
 " Unite configuration
 let g:unite_source_history_yank_enable = 1
@@ -177,7 +214,7 @@ nnoremap <space><space> :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
 
 " ag configuration
 " --- type ° to search the word in all files in the current dir
-nmap | :Ag <c-r>=expand("<cword>")<cr><cr>
+"nmap | :Ag <cr>=expand("<cword>")<cr><cr>
 nnoremap <space>/ :Ag
 
 " MOVE CODE UP AND DOWN
