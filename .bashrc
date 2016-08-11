@@ -9,6 +9,7 @@ case $- in
 esac
 
 # Homebrew autocomplete for git
+source ~/git-completion.bash
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
 . $(brew --prefix)/etc/bash_completion
 fi
@@ -171,12 +172,18 @@ export CLICOLOR=1
 
 # Aliases
 alias refresh='source ~/.bashrc'
+
+## Git alias
 alias gs='git status'
 alias glog='git log --oneline --graph'
 alias gd='git diff'
 alias gc='git checkout -'
 alias gpush='git push origin HEAD'
 alias gpull='git pull origin HEAD'
+### v Compares branches append master..branch at the end
+alias glcb="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative "
+
+## Rails dev aliases
 alias be='bundle exec'
 alias tbe='time bundle exec'
 
