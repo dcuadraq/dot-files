@@ -2,6 +2,11 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# set bash to Vi mode
+set -o vi
+
+# sets vim as editor
+export EDITOR='vim'
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -22,8 +27,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=
+HISTFILESIZE=
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -175,7 +180,7 @@ alias refresh='source ~/.bashrc'
 
 ## Git alias
 alias gs='git status'
-alias glog='git log --oneline --graph'
+alias glog='git log --oneline --graph --decorate --date=relative --all'
 alias gd='git diff'
 alias gc='git checkout -'
 alias gpush='git push origin HEAD'

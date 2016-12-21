@@ -9,6 +9,8 @@ set cursorcolumn
 set cursorline
 set ruler
 
+set smartcase
+
 set guioptions-=L
 set guioptions=-l
 
