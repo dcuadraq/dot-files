@@ -56,7 +56,18 @@ map <silent> <D-7> :tabn 7<cr>
 map <silent> <D-8> :tabn 8<cr>
 map <silent> <D-9> :tabn 9<cr>
 
-autocmd BufWritePre * :%s/\s\+$//e
+" function to strip trailing whitespace, except for markdown
+fun! StripTrailingWhitespace()
+  " Don't strip on these filetypes
+  if &ft =~ 'markdown' " :set filetype?  to see the curent filetype
+    return
+  endif
+  %s/\s\+$//e
+endfun
+
+" remove trailing whitespace on save
+autocmd BufWritePre * call StripTrailingWhitespace()
+"autocmd BufWritePre * :%s/\s\+$//e
 
 autocmd Filetype gitcommit setlocal spell textwidth=72 "spell checking and automatic wrapping at the recommended 72 columns to you commit messages
 
@@ -172,6 +183,12 @@ Plug 'https://github.com/airblade/vim-gitgutter'
 
 " Sintaxis linter
 "Plug 'https://github.com/scrooloose/syntastic'
+
+" Required by vim-markdown
+Plug 'godlygeek/tabular'
+" Markdown syntax highlight
+Plug 'plasticboy/vim-markdown'
+"
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
