@@ -65,6 +65,16 @@ fun! StripTrailingWhitespace()
   %s/\s\+$//e
 endfun
 
+" My functions ----------------------------------
+function! DeleteEmptyLines ()
+  :g/^\s*\n/d
+endfunction
+
+function! DeleteComments()
+  :g/^\s*#/d
+endfunction
+" -----------------------------------------------
+
 " remove trailing whitespace on save
 autocmd BufWritePre * call StripTrailingWhitespace()
 "autocmd BufWritePre * :%s/\s\+$//e
@@ -190,6 +200,9 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 "
 call plug#end()
+
+" disables pre-folding on markdowns due to godlygeek/tabular
+let g:vim_markdown_folding_disabled = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin mapping - scrooloose/nerdcommenter
