@@ -13,6 +13,9 @@ case $- in
       *) return;;
 esac
 
+# All terminal sessions share the same history instead of overwritting
+# shopt -s histappend # TODO not working
+
 # Homebrew autocomplete for git
 source ~/git-completion.bash
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
@@ -133,6 +136,12 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
+# My functions
+function rails_pid() {
+  # kill - 9 PID
+  lsof -wni tcp:3000
+}
+
 # Git Branch
 source ~/.git-prompt.sh
 PS1='[\u@\h \W$(__git_ps1 " (%s)")]\n$ '
@@ -185,6 +194,7 @@ alias gd='git diff'
 alias gc='git checkout -'
 alias gpush='git push origin HEAD'
 alias gpull='git pull origin HEAD'
+alias gfiles='git diff-tree --no-commit-id --name-only -r'
 ### v Compares branches append master..branch at the end
 alias glcb="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative "
 

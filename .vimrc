@@ -11,6 +11,9 @@ set ruler
 
 set smartcase
 
+" yanks uses OS clipboard
+set clipboard=unnamed
+
 set guioptions-=L
 set guioptions=-l
 
@@ -21,7 +24,7 @@ set relativenumber
 "autocmd InsertEnter * :set number " when entering Insertmode show absolute num line
 "autocmd InsertLeave * :set relativenumber " when leaving insertmode show relative line numbers
 
-set colorcolumn=100 " highlight column #
+set colorcolumn=80 " highlight column #
 
 set background=dark
 
@@ -229,7 +232,10 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 filetype plugin indent on
 let g:hardtime_default_on = 1 " hard time from beginning
 
-:colorscheme molokai
+" Set initial colorscheme
+":colorscheme molokai
+" https://github.com/romainl/Apprentice
+:colorscheme apprentice
 
 " Unite configuration
 let g:unite_source_history_yank_enable = 1
