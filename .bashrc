@@ -136,6 +136,10 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
+# nvm
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+
 # My functions
 function rails_pid() {
   # kill - 9 PID
@@ -191,10 +195,14 @@ alias refresh='source ~/.bashrc'
 alias gs='git status'
 alias glog='git log --oneline --graph --decorate --date=relative --all'
 alias gd='git diff'
+alias gf='git fetch origin master'
 alias gc='git checkout -'
 alias gpush='git push origin HEAD'
+alias gpushf='git push origin HEAD --force-with-lease'
 alias gpull='git pull origin HEAD'
 alias gfiles='git diff-tree --no-commit-id --name-only -r'
+alias gmine='git log --since "1 week ago" --until "tomorrow" --author="David Cuadra"'
+alias gdm='git diff --name-only master'
 ### v Compares branches append master..branch at the end
 alias glcb="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative "
 
@@ -208,3 +216,27 @@ export PATH="/usr/local/heroku/bin:$PATH"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+# tmux
+function tmux_start {
+  TMUX_DIRNAME=${1:-$(pwd)}
+  if test "`dirname $1`" = "."; then
+    if test "$1" = "."; then
+      TMUX_DIRNAME=$(pwd)
+    else
+      TMUX_DIRNAME=$(pwd)/$1
+    fi
+  fi
+
+  TMUX_APP=$(basename $TMUX_DIRNAME)
+  tmux has-session -t $TMUX_APP 2>/dev/null
+  if [ "$?" -eq 1 ] ; then
+    echo "No Session found.  Creating and configuring."
+    pushd $TMUX_DIRNAME
+    tmux new-session -d -s $TMUX_APP
+    popd
+  else
+    echo "Session found.  Connecting."
+  fi
+  tmux attach-session -t $TMUX_APP
+}
