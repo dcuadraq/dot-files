@@ -202,6 +202,7 @@ Plug 'godlygeek/tabular'
 " Markdown syntax highlight
 Plug 'plasticboy/vim-markdown'
 "
+Plug 'https://github.com/romainl/Apprentice'
 call plug#end()
 
 " disables pre-folding on markdowns due to godlygeek/tabular
