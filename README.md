@@ -31,6 +31,7 @@ cd dot-files
 Make a symbolic link on $HOME for the files
 ```shell
 ln -s {~/workspaces/dot-files/,~/}.vimrc
+ln -s {~/workspaces/dot-files/,~/}.tmux.conf
 ```
 To replace an already existing file on $HOME
 ```shell

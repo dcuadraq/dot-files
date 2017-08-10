@@ -233,6 +233,15 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 "
 Plug 'https://github.com/romainl/Apprentice'
+
+" Markdown live
+Plug 'shime/vim-livedown', { 'do': 'npm install -g livedown' }
+
+" Surround
+Plug 'tpope/vim-surround'
+
+" Repeat makes . work with macros and some plugins
+Plug 'tpope/vim-repeat'
 call plug#end()
 
 " disables pre-folding on markdowns due to godlygeek/tabular
@@ -247,6 +256,16 @@ imap <leader>/ <esc><plug>NERDCommenterToggle<CR>i
 nmap <leader>/ <plug>NERDCommenterToggle<CR>
 vmap <leader>/ <plug>NERDCommenterToggle
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin set up - shime/vim-livedown
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Should markdown preview get shown automatically upon opening markdown buffer
+let g:livedown_autorun = 1
+" the browser to use
+" let g:livedown_browser = "safari"
+" the port on which Livedown server will run
+let g:livedown_port = 1337
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin mapping - junegunn/fzf && junegunn/fzf-vim
