@@ -203,6 +203,7 @@ alias gpull='git pull origin HEAD'
 alias gfiles='git diff-tree --no-commit-id --name-only -r'
 alias gmine='git log --since "1 week ago" --until "tomorrow" --author="David Cuadra"'
 alias gdm='git diff --name-only master'
+alias gauthors="git log --format='%aN' | sort -u"
 ### v Compares branches append master..branch at the end
 alias glcb="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative "
 
