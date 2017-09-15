@@ -247,6 +247,10 @@ Plug 'tpope/vim-surround'
 
 " Repeat makes . work with macros and some plugins
 Plug 'tpope/vim-repeat'
+
+" Switch panes tmux like
+Plug 'https://github.com/t9md/vim-choosewin'
+
 call plug#end()
 
 " disables pre-folding on markdowns due to godlygeek/tabular
@@ -279,6 +283,14 @@ let g:livedown_port = 1337
 " List and select from file list
 map <leader><tab> :Files<cr>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin mapping - vim-choosewin
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" invoke with '-'
+nmap  -  <Plug>(choosewin)
+let g:choosewin_overlay_enable = 1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
