@@ -50,7 +50,12 @@ set lazyredraw " buffer screen updates instead of updating all the time
 " sets vim update time to a higher frecuency than default (4s) for vim-gitgutter
 set updatetime=250
 
+" Ctrl + H/L moves to next tab
+map <silent> <C-L> :tabnext <cr>
+map <silent> <C-H> :tabprevious <cr>
+
 " Use numbers to pick the tab you want (In OS X replace M for D)
+" clashes with appending next line
 map <silent> <D-0> :tabn 0<cr>
 map <silent> <D-1> :tabn 1<cr>
 map <silent> <D-2> :tabn 2<cr>
