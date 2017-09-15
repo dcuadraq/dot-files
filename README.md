@@ -57,6 +57,11 @@ Inside vim
 :PlugInstall
 ```
 
+For `vim-livedown` to work:
+```
+npm install -g livedown
+```
+
 # Gnome Plugins
 * Alt Tab Workspace
 * AlternateTab
