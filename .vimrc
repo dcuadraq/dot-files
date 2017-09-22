@@ -165,6 +165,12 @@ onoremap <silent> ]L :call NextIndent(1, 1, 1, 1)<CR>
 
 
 call plug#begin('~/.vim/plugged')
+" Javascript sytanx highlight
+Plug 'https://github.com/pangloss/vim-javascript'
+
+" JSX syntax highlight
+Plug 'https://github.com/mxw/vim-jsx'
+
 " Comment
 Plug 'scrooloose/nerdcommenter'
 
@@ -255,6 +261,32 @@ call plug#end()
 
 " disables pre-folding on markdowns due to godlygeek/tabular
 let g:vim_markdown_folding_disabled = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin Javascript highlight
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Concealing characters
+let g:javascript_conceal_function             = "ƒ"
+let g:javascript_conceal_null                 = "ø"
+let g:javascript_conceal_this                 = "@"
+let g:javascript_conceal_return               = "⇚"
+let g:javascript_conceal_undefined            = "¿"
+let g:javascript_conceal_NaN                  = "ℕ"
+let g:javascript_conceal_prototype            = "¶"
+let g:javascript_conceal_static               = "•"
+let g:javascript_conceal_super                = "Ω"
+let g:javascript_conceal_arrow_function       = "⇒"
+"let g:javascript_conceal_noarg_arrow_function = "🞅"
+"let g:javascript_conceal_underscore_arrow_function = "🞅"
+
+set conceallevel=1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin JSX highlight
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:jsx_ext_required = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin mapping - scrooloose/nerdcommenter
