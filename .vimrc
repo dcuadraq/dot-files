@@ -11,6 +11,8 @@ set ruler
 
 set smartcase
 
+set nowrap
+
 " yanks uses OS clipboard
 set clipboard=unnamed
 
@@ -30,6 +32,9 @@ set background=dark
 
 " status line always visible
 set laststatus=2
+
+" autosaves on focus lost | pane switch
+autocmd BufLeave,FocusLost * silent! wall
 
 "set directory=~/tmp
 "set backup=~/tmp
@@ -175,7 +180,7 @@ Plug 'https://github.com/mxw/vim-jsx'
 Plug 'scrooloose/nerdcommenter'
 
 " Status line
-Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline'
 
 " Make sure you use single quotes
 " Plug 'junegunn/seoul256.vim'
@@ -257,6 +262,16 @@ Plug 'tpope/vim-repeat'
 " Switch panes tmux like
 Plug 'https://github.com/t9md/vim-choosewin'
 
+" Make Vim play nicely with iTerm 2 and tmux. Makes FocusLost work under iTerm2 and Tmux
+Plug 'https://github.com/sjl/vitality.vim'
+
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', {
+      \ 'do': 'yarn install',
+      \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
+
+" Async linter
+Plug 'w0rp/ale'
 call plug#end()
 
 " disables pre-folding on markdowns due to godlygeek/tabular
@@ -280,7 +295,7 @@ let g:javascript_conceal_arrow_function       = "⇒"
 "let g:javascript_conceal_noarg_arrow_function = "🞅"
 "let g:javascript_conceal_underscore_arrow_function = "🞅"
 
-set conceallevel=1
+"set conceallevel=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin JSX highlight
