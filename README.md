@@ -76,3 +76,6 @@ https://gorails.com/setup/
 
 # Others
 Set CAPS LOCKS as CTRL
+
+# Pro Tip
+Using fzf, with CTRL+T for autocomplete on bash
