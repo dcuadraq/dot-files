@@ -1,0 +1,8 @@
+[color]
+	ui = true
+[user]
+	name = David Cuadra
+	email = dcuadraq@gmail.com
+[alias]
+	co = checkout
+	lm = log -1 --pretty=%B # last commit message
