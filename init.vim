@@ -72,6 +72,15 @@ call plug#begin()
 
   " for surrounding
   Plug 'tpope/vim-surround'
+
+  " for commenting
+  Plug 'tpope/vim-commentary'
+
+  " easily search for, substitute, and abbreviate multiple variants of a word
+  Plug 'tpope/vim-abolish'
+
+  " enable repeating supported plugin maps with . 
+  Plug 'tpope/vim-repeat'
   call plug#end()
 
 " ************************
@@ -120,3 +129,9 @@ let g:prettier#config#jsx_bracket_same_line = 'false'
 
 let g:ale_completion_enabled = 1
 " let g:ale_linters = {'javascript': ['flow', 'eslint']}
+
+" ******************
+" Aliases
+" ******************
+command Gs Gstatus
+command Gd Gdiff
