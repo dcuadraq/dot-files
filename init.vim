@@ -37,7 +37,6 @@ fun! StripTrailingWhitespace()
   %s/\s\+$//e
 endfun
 
-
 " NeoVim fix to change the color of the cursorcolumn
 function CorrectColorScheme()
   highlight CursorColumn ctermbg=Black
@@ -50,9 +49,6 @@ call plug#begin()
 
   " JSX syntax highlight
   Plug 'mxw/vim-jsx'
-
-  " Git wrapper
-  Plug 'tpope/vim-fugitive'
 
   " Async linter
   Plug 'w0rp/ale'
@@ -70,6 +66,12 @@ call plug#begin()
   " Pretty command for JS code
   Plug 'prettier/vim-prettier'
 
+  " insert or delete brackets, parens, quotes in pair
+  Plug 'jiangmiao/auto-pairs'
+
+  " Git wrapper
+  Plug 'tpope/vim-fugitive'
+
   " for surrounding
   Plug 'tpope/vim-surround'
 
@@ -81,6 +83,9 @@ call plug#begin()
 
   " enable repeating supported plugin maps with . 
   Plug 'tpope/vim-repeat'
+
+  " Ruby on Rails power tools
+  Plug 'tpope/vim-rails'
   call plug#end()
 
 " ************************
