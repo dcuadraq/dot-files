@@ -189,13 +189,18 @@ export PS1="\[\e[01;32m\]\h\[\e[0m\]\[\e[01;37m\]@\[\e[0m\]\[\e[01;31m\]\u\[\e[0
 export CLICOLOR=1
 
 # Aliases
-alias refresh='source ~/.bashrc'
+alias refresh='source ~/.bash_profile'
+alias br='bin/rails'
+alias brt='bin/rails test'
+alias brc='bin/rails console'
+alias brs='bin/rails server'
 
 ## Git alias
 alias gs='git status'
 alias glog='git log --oneline --graph --decorate --date=relative --all'
 alias gd='git diff'
 alias gf='git fetch origin master'
+alias gfm='git fetch origin master:master'
 alias gc='git checkout -'
 alias gpush='git push origin HEAD'
 alias gpushf='git push origin HEAD --force-with-lease'

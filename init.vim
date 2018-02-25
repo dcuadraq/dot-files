@@ -22,6 +22,10 @@ set cursorline              " highlights current line
 
 au BufLeave * silent! wall " autosave when leaving buffer/pane
 
+" reloads buffers when changed outside vim
+set autoread
+autocmd FocusGained * checktime
+
 " Ctrl + H/L moves to next tab
 " On Explorer overrides Causes Netrw to refresh the directory listing |netrw-ctrl-l|
 map <silent> <C-L> :tabnext <cr>
@@ -36,6 +40,9 @@ fun! StripTrailingWhitespace()
   endif
   %s/\s\+$//e
 endfun
+
+" remove trailing whitespace on save
+autocmd BufWritePre * call StripTrailingWhitespace()
 
 " NeoVim fix to change the color of the cursorcolumn
 function CorrectColorScheme()
@@ -81,7 +88,7 @@ call plug#begin()
   " easily search for, substitute, and abbreviate multiple variants of a word
   Plug 'tpope/vim-abolish'
 
-  " enable repeating supported plugin maps with . 
+  " enable repeating supported plugin maps with .
   Plug 'tpope/vim-repeat'
 
   " Ruby on Rails power tools
