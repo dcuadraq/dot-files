@@ -214,6 +214,9 @@ alias gauthors="git log --format='%aN' | sort -u"
 ### v Compares branches append master..branch at the end
 alias glcb="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative "
 
+# commits that modified a file
+alias gcf='git log -- ' # PATH
+
 ## Rails dev aliases
 alias be='bundle exec'
 alias tbe='time bundle exec'
