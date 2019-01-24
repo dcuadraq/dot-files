@@ -5,8 +5,10 @@
 # set bash to Vi mode
 set -o vi
 
-# sets vim as editor
-export EDITOR='vim'
+# sets nvim as editor
+export VISUAL=nvim
+export EDITOR="$VISUAL"
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -190,6 +192,10 @@ export CLICOLOR=1
 
 # Aliases
 alias refresh='source ~/.bash_profile'
+
+## Rails dev aliases
+alias be='bundle exec'
+alias tbe='time bundle exec'
 alias br='bin/rails'
 alias brt='bin/rails test'
 alias brc='bin/rails console'
@@ -208,6 +214,8 @@ alias gpull='git pull origin HEAD'
 alias gfiles='git diff-tree --no-commit-id --name-only -r'
 alias gmine='git log --since "1 week ago" --until "tomorrow" --author="David Cuadra"'
 alias gdm='git diff --name-only master'
+alias gundolast='git reset HEAD~'
+alias gconflictfiles='git diff --name-only --diff-filter=U'
 # git hash at the end
 alias gfiles="git diff-tree --no-commit-id --name-only -r"
 alias gauthors="git log --format='%aN' | sort -u"
@@ -216,10 +224,6 @@ alias glcb="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset
 
 # commits that modified a file
 alias gcf='git log -- ' # PATH
-
-## Rails dev aliases
-alias be='bundle exec'
-alias tbe='time bundle exec'
 
 
 ### Added by the Heroku Toolbelt

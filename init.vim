@@ -52,7 +52,10 @@ autocmd VimEnter * call CorrectColorScheme()
 
 call plug#begin()
   " Color theme based on Visual Studio
-  Plug 'tomasiser/vim-code-dark'
+  " Plug 'tomasiser/vim-code-dark'
+
+  " Color theme
+  Plug 'Nequo/vim-allomancer'
 
   " JSX syntax highlight
   Plug 'mxw/vim-jsx'
@@ -93,7 +96,16 @@ call plug#begin()
 
   " Ruby on Rails power tools
   Plug 'tpope/vim-rails'
-  call plug#end()
+
+  " A set of mappings for HTML, XML, PHP, ASP, eRuby, JSP, and more (formerly allml)
+  Plug 'tpope/vim-ragtag'
+
+  " Search and replace across files
+  Plug 'skwp/greplace.vim'
+
+  " Swift
+  Plug 'keith/swift.vim'
+call plug#end()
 
 " ************************
 " Config for plugins
@@ -110,7 +122,14 @@ let g:jsx_ext_required = 0
 " tomasiser/vim-code-dark config
 " ******************
 " sets the colorscheme
-colorscheme codedark
+" colorscheme codedark
+
+" ******************
+" Nequo/vim-allomancer config
+" ******************
+" sets the colorscheme
+set termguicolors "Remove this in urxvt
+colo allomancer
 
 " ******************
 " t9md/vim-choosewin config
@@ -147,3 +166,6 @@ let g:ale_completion_enabled = 1
 " ******************
 command Gs Gstatus
 command Gd Gdiff
+
+" Use \z to fold everything but matching lines of last search
+nnoremap \z :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldmethod=expr foldlevel=0 foldcolumn=2<CR>
