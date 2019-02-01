@@ -100,6 +100,9 @@ call plug#begin()
   " A set of mappings for HTML, XML, PHP, ASP, eRuby, JSP, and more (formerly allml)
   Plug 'tpope/vim-ragtag'
 
+  " Asynchronous build and test dispatcher
+  Plug 'tpope/vim-dispatch'
+
   " Search and replace across files
   Plug 'skwp/greplace.vim'
 
