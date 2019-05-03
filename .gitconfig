@@ -6,3 +6,6 @@
 [alias]
 	co = checkout
 	lm = log -1 --pretty=%B # last commit message
+	sync = "!sh -c 'git checkout --quiet --detach HEAD && \
+                  git fetch origin master:master ; \
+                  git checkout --quiet -'"

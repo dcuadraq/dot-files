@@ -55,7 +55,10 @@ call plug#begin()
   " Plug 'tomasiser/vim-code-dark'
 
   " Color theme
-  Plug 'Nequo/vim-allomancer'
+  " Plug 'Nequo/vim-allomancer'
+
+  " Color theme
+  Plug 'aonemd/kuroi.vim'
 
   " JSX syntax highlight
   Plug 'mxw/vim-jsx'
@@ -131,8 +134,15 @@ let g:jsx_ext_required = 0
 " Nequo/vim-allomancer config
 " ******************
 " sets the colorscheme
-set termguicolors "Remove this in urxvt
-colo allomancer
+" "colo allomancer
+
+" ******************
+" aonemd/kuroi.vim config
+" ******************
+" sets the colorscheme
+set termguicolors
+set background=dark   "or use the light theme: set background=light
+colorscheme kuroi
 
 " ******************
 " t9md/vim-choosewin config

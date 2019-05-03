@@ -80,3 +80,4 @@ Set CAPS LOCKS as CTRL
 # Pro Tip
 Using fzf, with CTRL+T for autocomplete on bash
 Set font Source Font Pro on iterm/profile
+Or [Hack](https://github.com/source-foundry/Hack)
