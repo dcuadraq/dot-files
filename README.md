@@ -71,6 +71,9 @@ npm install -g livedown
 * Top Panel Workspace Scroll
 * shellshape
 
+# Tmux plugins
+* https://github.com/tmux-plugins/tmux-resurrect
+
 # Rails
 https://gorails.com/setup/
 
