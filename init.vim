@@ -111,6 +111,9 @@ call plug#begin()
 
   " Swift
   Plug 'keith/swift.vim'
+
+  " CSV
+  Plug 'chrisbra/csv.vim'
 call plug#end()
 
 " ************************
