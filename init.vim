@@ -58,13 +58,19 @@ call plug#begin()
   " Plug 'Nequo/vim-allomancer'
 
   " Color theme
-  Plug 'aonemd/kuroi.vim'
+  " Plug 'aonemd/kuroi.vim'
+
+  " Color theme
+  " Plug 'gkapfham/vim-vitamin-onec'
+
+  " Color theme
+  Plug 'sonph/onehalf', { 'rtp': 'vim/' }
 
   " JSX syntax highlight
   Plug 'mxw/vim-jsx'
 
   " Async linter
-  Plug 'w0rp/ale'
+  " Plug 'w0rp/ale'
 
   " Tmux like buffer navigation
   Plug 't9md/vim-choosewin'
@@ -117,6 +123,9 @@ call plug#begin()
 
   " CSV
   Plug 'chrisbra/csv.vim'
+
+  " Line at bottom
+  Plug 'vim-airline/vim-airline'
 call plug#end()
 
 " ************************
@@ -135,20 +144,29 @@ let g:jsx_ext_required = 0
 " ******************
 " sets the colorscheme
 " colorscheme codedark
+" set termguicolors
 
 " ******************
 " Nequo/vim-allomancer config
 " ******************
 " sets the colorscheme
-" "colo allomancer
+" set termguicolors
+" colo allomancer
 
 " ******************
 " aonemd/kuroi.vim config
 " ******************
 " sets the colorscheme
+" set termguicolors
+" set background=dark   "or use the light theme: set background=light
+" colorscheme kuroi
+
+" ******************
+" sonph/onehalf config
+" ******************
 set termguicolors
-set background=dark   "or use the light theme: set background=light
-colorscheme kuroi
+colorscheme onehalfdark
+let g:airline_theme='onehalfdark'
 
 " ******************
 " t9md/vim-choosewin config
