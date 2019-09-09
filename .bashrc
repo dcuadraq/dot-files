@@ -256,3 +256,12 @@ function tmux_start {
   tmux attach-session -t $TMUX_APP
 }
 export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# To be used by iterm
+# Ruby: \(user.rubyVersion)
+function iterm2_print_user_vars() {
+  iterm2_set_user_var rubyVersion $(ruby -v | awk '{ print $2 }')
+  iterm2_set_user_var nodeVersion $(node -v)
+}
