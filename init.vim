@@ -85,6 +85,9 @@ call plug#begin()
   " Git wrapper
   Plug 'tpope/vim-fugitive'
 
+  " Shows a git diff in the gutter (sign column)
+  Plug 'airblade/vim-gitgutter'
+
   " for surrounding
   Plug 'tpope/vim-surround'
 
