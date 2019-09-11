@@ -84,3 +84,9 @@ Set CAPS LOCKS as CTRL
 Using fzf, with CTRL+T for autocomplete on bash
 Set font Source Font Pro on iterm/profile
 Or [Hack](https://github.com/source-foundry/Hack)
+
+# Bash apps
+* [exa](https://github.com/ogham/exa)
+* [bat](https://github.com/sharkdp/bat)
+* [httpie](https://github.com/jakubroztocil/httpie)
+* [watchexec](https://github.com/watchexec/watchexec)
