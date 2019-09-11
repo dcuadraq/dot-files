@@ -20,6 +20,14 @@ set conceallevel=1          " might not be needed
 set nowrap                  " disables word wrap
 set cursorline              " highlights current line
 
+" Space as leader key
+let mapleader = "\<Space>"
+" let localmapleader = "\<Space>"
+nnoremap <leader>f :Files <cr>
+nnoremap <leader>s :Ag <cr>
+nnoremap <leader>w :W <cr>
+nnoremap <leader>q :ChooseWin <cr>
+
 au BufLeave * silent! wall " autosave when leaving buffer/pane
 
 " reloads buffers when changed outside vim
