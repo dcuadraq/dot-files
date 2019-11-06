@@ -27,6 +27,8 @@ nnoremap <leader>f :Files <cr>
 nnoremap <leader>s :Ag <cr>
 nnoremap <leader>w :W <cr>
 nnoremap <leader>q :ChooseWin <cr>
+nnoremap <leader>e :Explore <cr>
+nnoremap <leader><leader> :Commands <cr>
 
 au BufLeave * silent! wall " autosave when leaving buffer/pane
 
@@ -78,7 +80,7 @@ call plug#begin()
   Plug 'mxw/vim-jsx'
 
   " Async linter
-  " Plug 'w0rp/ale'
+  Plug 'w0rp/ale'
 
   " Tmux like buffer navigation
   Plug 't9md/vim-choosewin'
@@ -98,6 +100,12 @@ call plug#begin()
 
   " Git wrapper
   Plug 'tpope/vim-fugitive'
+
+  " Git branch viewer
+  Plug 'rbong/vim-flog'
+
+  " Git Fugitive extension to manage Git branches
+  Plug 'idanarye/vim-merginal'
 
   " Shows a git diff in the gutter (sign column)
   Plug 'airblade/vim-gitgutter'
@@ -203,7 +211,11 @@ let g:prettier#autoformat = 0
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#jsx_bracket_same_line = 'false'
 
+" ******************
+" 'w0rp/ale' config
+" ******************
 let g:ale_completion_enabled = 1
+let g:ale_lint_on_text_changed = 'never'
 " let g:ale_linters = {'javascript': ['flow', 'eslint']}
 
 " ******************
