@@ -139,8 +139,8 @@ eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
 # nvm
-export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
+# export NVM_DIR="$HOME/.nvm"
+# . "/usr/local/opt/nvm/nvm.sh"
 
 # My functions
 function rails_pid() {
@@ -200,6 +200,7 @@ alias br='bin/rails'
 alias brt='bin/rails test'
 alias brc='bin/rails console'
 alias brs='bin/rails server'
+alias nv='nvim +GFiles'
 
 ## Git alias
 alias gs='git status'
@@ -255,7 +256,7 @@ function tmux_start {
   fi
   tmux attach-session -t $TMUX_APP
 }
-export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
+# export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
