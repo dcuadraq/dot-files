@@ -1,12 +1,17 @@
 rename-window vim
-send "vim ." C-m
+send "nvim +GFiles" C-m
+
 new-window -n server
 send "bundle exec rails s" C-m
+
 split-window -h
 send "bundle exec rails c" C-m
+
 new-window -n routes
 send "vim config/routes.rb" C-m
+
 split-window -h
 send "bundle exec rails routes" C-m
+
 new-window -t 9 -n redis
 send "redis-server" C-m

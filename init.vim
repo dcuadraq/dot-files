@@ -23,7 +23,7 @@ set cursorline              " highlights current line
 " Space as leader key
 let mapleader = "\<Space>"
 " let localmapleader = "\<Space>"
-nnoremap <leader>f :Files <cr>
+nnoremap <leader>f :GFiles <cr>
 nnoremap <leader>s :Ag <cr>
 nnoremap <leader>w :W <cr>
 nnoremap <leader>q :ChooseWin <cr>
@@ -35,6 +35,13 @@ au BufLeave * silent! wall " autosave when leaving buffer/pane
 " reloads buffers when changed outside vim
 set autoread
 autocmd FocusGained * checktime
+
+" Resize buffers if vim is resized
+autocmd VimResized * :wincmd =
+
+" Zoom a vim pane
+nnoremap <leader>z :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
 
 " Ctrl + H/L moves to next tab
 " On Explorer overrides Causes Netrw to refresh the directory listing |netrw-ctrl-l|
@@ -84,6 +91,9 @@ call plug#begin()
 
   " Tmux like buffer navigation
   Plug 't9md/vim-choosewin'
+
+  " Avoid key binding crash with tmux
+  Plug 'christoomey/vim-tmux-navigator'
 
   " Highlights indentations
   Plug 'Yggdroot/indentLine'
