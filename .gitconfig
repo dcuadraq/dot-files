@@ -8,6 +8,7 @@
   lm = commit --amend --no-edit
   lm = log -1 --pretty=%B # last commit message
   cob = checkout -
+  lg = log --oneline --graph --decorate --date=relative --all
   d = diff
   f = fetch origin master
   files = diff-tree --no-commit-id --name-only -r # files in a commit

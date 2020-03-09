@@ -192,6 +192,8 @@ export CLICOLOR=1
 
 # Aliases
 alias refresh='source ~/.bash_profile'
+alias list_commands='compgen -c'
+alias list_functions='compgen -A function'
 
 ## Rails dev aliases
 alias be='bundle exec'
@@ -203,6 +205,7 @@ alias brs='bin/rails server'
 alias nv='nvim +GFiles'
 
 ## Git alias
+alias g='git'
 alias gs='git status'
 alias glog='git log --oneline --graph --decorate --date=relative --all'
 alias gd='git diff'

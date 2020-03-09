@@ -102,6 +102,9 @@ call plug#begin()
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install' }
   Plug 'junegunn/fzf.vim'
 
+  " ferret
+  Plug 'wincent/ferret'
+
   " Pretty command for JS code
   Plug 'prettier/vim-prettier'
 
@@ -152,6 +155,10 @@ call plug#begin()
 
   " Line at bottom
   Plug 'vim-airline/vim-airline'
+
+  " Zen HTML
+  Plug 'mattn/emmet-vim'
+
 call plug#end()
 
 " ************************
