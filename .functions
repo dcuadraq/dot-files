@@ -1,0 +1,37 @@
+# My functions
+
+function rails_pid() {
+  # kill - 9 PID
+  lsof -wni tcp:3000
+}
+
+# To be used by iterm
+# Ruby: \(user.rubyVersion)
+function iterm2_print_user_vars() {
+  iterm2_set_user_var rubyVersion $(ruby -v | awk '{ print $2 }')
+  iterm2_set_user_var nodeVersion $(node -v)
+}
+
+# tmux
+function tmux_start {
+  TMUX_DIRNAME=${1:-$(pwd)}
+  if test "`dirname $1`" = "."; then
+    if test "$1" = "."; then
+      TMUX_DIRNAME=$(pwd)
+    else
+      TMUX_DIRNAME=$(pwd)/$1
+    fi
+  fi
+
+  TMUX_APP=$(basename $TMUX_DIRNAME)
+  tmux has-session -t $TMUX_APP 2>/dev/null
+  if [ "$?" -eq 1 ] ; then
+    echo "No Session found.  Creating and configuring."
+    pushd $TMUX_DIRNAME
+    tmux new-session -d -s $TMUX_APP
+    popd
+  else
+    echo "Session found.  Connecting."
+  fi
+  tmux attach-session -t $TMUX_APP
+}
