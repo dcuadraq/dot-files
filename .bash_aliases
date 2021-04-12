@@ -18,9 +18,10 @@ alias l='ls -CF'
 alias trim='sudo fstrim -v /'
 
 # Handy Aliases
-alias refresh='source ~/.bash_profile'
+alias refresh='source ~/.bashrc'
 alias list_commands='compgen -c'
 alias list_functions='compgen -A function'
+alias rgf='rg --files | rg'
 
 ## Rails dev aliases
 alias be='bundle exec'
@@ -59,3 +60,6 @@ alias gcf='git log -- ' # PATH
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# ctags for RoR proyects
+alias ctags_ruby='ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths) -f .tags'

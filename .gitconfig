@@ -21,3 +21,5 @@
   sync = "!sh -c 'git checkout --quiet --detach HEAD && \
                   git fetch origin master:master ; \
                   git checkout --quiet -'"
+[core]
+	attributesfile = /Users/cuadra/.gitattributes

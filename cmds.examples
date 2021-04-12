@@ -1,0 +1,2 @@
+# rg search with multiple patterns
+rg -N '(?P<p1>.*pattern1.*)(?P<p2>.*pattern2.*)(?P<p3>.*pattern3.*)' file.txt

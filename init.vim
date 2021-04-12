@@ -10,8 +10,8 @@ set softtabstop=2           " see multiple spaces as tabstops so <BS> does the r
 set expandtab               " converts tabs to white space
 set shiftwidth=2            " width for autoindents
 set autoindent              " indent a new line the same amount as the line just typed
-set rnu                     " show relative numbers
-set number relativenumber   " show current line as absolute
+" set rnu                     " show relative numbers
+set number " relativenumber   " show current line as absolute
 set wildmode=longest,list   " get bash-like tab completions
 set cc=80                   " column mark
 set cursorcolumn            " highlight for current column
@@ -23,8 +23,8 @@ set cursorline              " highlights current line
 " Space as leader key
 let mapleader = "\<Space>"
 " let localmapleader = "\<Space>"
-nnoremap <leader>f :GFiles <cr>
-nnoremap <leader>s :Ag <cr>
+nnoremap <leader>f :Files <cr>
+nnoremap <leader>s :Rg <cr>
 nnoremap <leader>w :W <cr>
 nnoremap <leader>q :ChooseWin <cr>
 nnoremap <leader>e :Explore <cr>
@@ -87,13 +87,16 @@ call plug#begin()
   Plug 'mxw/vim-jsx'
 
   " Async linter
-  Plug 'w0rp/ale'
+  Plug 'dense-analysis/ale'
 
   " Tmux like buffer navigation
   Plug 't9md/vim-choosewin'
 
   " Avoid key binding crash with tmux
   Plug 'christoomey/vim-tmux-navigator'
+
+  " Tmux like zoom
+  Plug 'dhruvasagar/vim-zoom'
 
   " Highlights indentations
   Plug 'Yggdroot/indentLine'
@@ -154,7 +157,7 @@ call plug#begin()
   Plug 'chrisbra/csv.vim'
 
   " Line at bottom
-  Plug 'vim-airline/vim-airline'
+  " Plug 'vim-airline/vim-airline'
 
   " Zen HTML
   Plug 'mattn/emmet-vim'
@@ -231,8 +234,12 @@ let g:prettier#config#jsx_bracket_same_line = 'false'
 " ******************
 " 'w0rp/ale' config
 " ******************
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_virtualenv_dir_names = []
+let g:ale_ruby_rubocop_executable = 'bundle'
+let g:ale_lint_on_enter = 0
 " let g:ale_linters = {'javascript': ['flow', 'eslint']}
 
 " ******************

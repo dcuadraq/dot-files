@@ -21,6 +21,7 @@ source ~/git-completion.bash
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
 . $(brew --prefix)/etc/bash_completion
 fi
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 # #####################
 # BASH HISTORY
@@ -201,8 +202,19 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# Set ripgrep as default for FZF on vim
+FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
+
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 # export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# Dollar Shave Club
+source ~/.dscrc
+export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
