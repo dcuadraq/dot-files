@@ -30,6 +30,7 @@ alias brt='bin/rails test'
 alias brc='bin/rails console'
 alias brs='bin/rails server'
 alias nv='nvim +GFiles'
+alias ctags_gen='ctags -R --languages=ruby --exclude=.git --exclude=log --exclude=tmp . $(bundle list --paths)'
 
 ## Git alias
 alias g='git'

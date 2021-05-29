@@ -10,8 +10,8 @@ set softtabstop=2           " see multiple spaces as tabstops so <BS> does the r
 set expandtab               " converts tabs to white space
 set shiftwidth=2            " width for autoindents
 set autoindent              " indent a new line the same amount as the line just typed
-set rnu                     " show relative numbers
-set number relativenumber   " show current line as absolute
+" set rnu                     " show relative numbers
+set number " relativenumber   " show current line as absolute
 set wildmode=longest,list   " get bash-like tab completions
 set cc=80                   " column mark
 set cursorcolumn            " highlight for current column
@@ -29,6 +29,10 @@ nnoremap <leader>w :W <cr>
 nnoremap <leader>q :ChooseWin <cr>
 nnoremap <leader>e :Explore <cr>
 nnoremap <leader><leader> :Commands <cr>
+
+" moves selection
+vnoremap J :m '>+1<cr>gv=gv
+vnoremap K :m '<-2<cr>gv=gv
 
 au BufLeave * silent! wall " autosave when leaving buffer/pane
 
@@ -154,7 +158,7 @@ call plug#begin()
   Plug 'chrisbra/csv.vim'
 
   " Line at bottom
-  Plug 'vim-airline/vim-airline'
+  " Plug 'vim-airline/vim-airline'
 
   " Zen HTML
   Plug 'mattn/emmet-vim'

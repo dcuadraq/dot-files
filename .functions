@@ -35,3 +35,22 @@ function tmux_start {
   fi
   tmux attach-session -t $TMUX_APP
 }
+
+# fzf git checkout
+fbr() {
+  local branches branch
+  branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+# bind '"\C-g\C-f": "$(fbr)\e\C-e\er"'
+bind '"\C-g\C-f": "fbr\e\C-e\er"'
+
+alias_fzf() {
+  aliases=$(alias) &&
+  selected=$(echo "$aliases" | fzf-tmux -d $(( 2 + $(wc -l <<< "$aliases") )) +m) &&
+  command=$(echo "$selected"| awk '{print $2}' | awk -F\= '{print $1}')
+  eval $command
+}
