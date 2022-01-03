@@ -20,15 +20,23 @@ set conceallevel=1          " might not be needed
 set nowrap                  " disables word wrap
 set cursorline              " highlights current line
 
+
+
 " Space as leader key
 let mapleader = "\<Space>"
 " let localmapleader = "\<Space>"
-nnoremap <leader>f :GFiles <cr>
+nnoremap <leader>f :Files <cr>
+nnoremap <leader>t :Tags <cr>
 nnoremap <leader>s :Ag <cr>
 nnoremap <leader>w :W <cr>
 nnoremap <leader>q :ChooseWin <cr>
 nnoremap <leader>e :Explore <cr>
 nnoremap <leader><leader> :Commands <cr>
+nnoremap <leader>r :source $MYVIMRC <cr>
+
+" remaps Ctrl-] to go-to-definition, if only 1 match, jumps directly
+" <c-r><C-w> takes word under cursor
+map <silent> <C-]> :tjump <c-r><C-w> <cr>
 
 " moves selection
 vnoremap J :m '>+1<cr>gv=gv
@@ -86,6 +94,9 @@ call plug#begin()
 
   " Color theme
   Plug 'sonph/onehalf', { 'rtp': 'vim/' }
+
+  " Color theme
+  Plug 'liuchengxu/space-vim-dark'
 
   " JSX syntax highlight
   Plug 'mxw/vim-jsx'
@@ -163,6 +174,9 @@ call plug#begin()
   " Zen HTML
   Plug 'mattn/emmet-vim'
 
+  " Rainbow Parentheses
+  Plug 'luochen1990/rainbow'
+
 call plug#end()
 
 " ************************
@@ -202,8 +216,13 @@ let g:jsx_ext_required = 0
 " sonph/onehalf config
 " ******************
 set termguicolors
-colorscheme onehalfdark
-let g:airline_theme='onehalfdark'
+" colorscheme onehalfdark
+" let g:airline_theme='onehalfdark'
+
+" ******************
+" liuchengxu/space-vim-dark config
+" ******************
+colorscheme space-vim-dark
 
 " ******************
 " t9md/vim-choosewin config
@@ -238,6 +257,12 @@ let g:prettier#config#jsx_bracket_same_line = 'false'
 let g:ale_completion_enabled = 1
 let g:ale_lint_on_text_changed = 'never'
 " let g:ale_linters = {'javascript': ['flow', 'eslint']}
+"
+" ******************
+" luochen1990/rainbow config
+" ******************
+" activate
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 
 " ******************
 " Aliases
