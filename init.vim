@@ -79,6 +79,13 @@ function CorrectColorScheme()
 endfunction
 autocmd VimEnter * call CorrectColorScheme()
 
+" Auto install vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin()
   " Color theme based on Visual Studio
   " Plug 'tomasiser/vim-code-dark'
@@ -176,6 +183,9 @@ call plug#begin()
 
   " Rainbow Parentheses
   Plug 'luochen1990/rainbow'
+
+  " Smooth scrolling
+  Plug 'psliwka/vim-smoothie'
 
 call plug#end()
 

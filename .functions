@@ -46,7 +46,7 @@ fbr() {
 }
 
 # bind '"\C-g\C-f": "$(fbr)\e\C-e\er"'
-bind '"\C-g\C-f": "fbr\e\C-e\er"'
+# bind '"\C-g\C-f": "fbr\e\C-e\er"' # commented because of zsh
 
 alias_fzf() {
   aliases=$(alias) &&
