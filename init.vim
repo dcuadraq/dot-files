@@ -19,6 +19,7 @@ set list                    " highlight trailing whitespace and tabs
 set conceallevel=1          " might not be needed
 set nowrap                  " disables word wrap
 set cursorline              " highlights current line
+set conceallevel=0          " display quotes on JSON
 
 
 
@@ -112,7 +113,7 @@ call plug#begin()
   Plug 'w0rp/ale'
 
   " Tmux like buffer navigation
-  Plug 't9md/vim-choosewin'
+  " Plug 't9md/vim-choosewin'
 
   " Avoid key binding crash with tmux
   Plug 'christoomey/vim-tmux-navigator'
@@ -185,7 +186,16 @@ call plug#begin()
   Plug 'luochen1990/rainbow'
 
   " Smooth scrolling
-  Plug 'psliwka/vim-smoothie'
+  " Plug 'psliwka/vim-smoothie'
+
+  " Context
+  Plug 'wellle/context.vim'
+
+  " JSX
+  Plug 'MaxMEllon/vim-jsx-pretty'
+
+  " Multi line
+  Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 call plug#end()
 
