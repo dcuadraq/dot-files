@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # My functions
 
 function rails_pid() {

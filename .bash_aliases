@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -21,6 +23,7 @@ alias trim='sudo fstrim -v /'
 alias refresh='source ~/.bash_profile'
 alias list_commands='compgen -c'
 alias list_functions='compgen -A function'
+alias rgf='rg --files | rg'
 
 ## Rails dev aliases
 alias be='bundle exec'
