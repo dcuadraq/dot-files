@@ -16,11 +16,12 @@ case $- in
       *) return;;
 esac
 
-# Homebrew autocomplete for git
+# Git autocomplete
 source ~/git-completion.bash
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-. $(brew --prefix)/etc/bash_completion
-fi
+# For homebrew
+# if [ -f $(brew --prefix)/etc/bash_completion ]; then
+# . $(brew --prefix)/etc/bash_completion
+# fi
 
 # #####################
 # BASH HISTORY
@@ -33,8 +34,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=2000
-HISTFILESIZE=4000
+HISTSIZE=20000
+HISTFILESIZE=40000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -141,10 +142,12 @@ fi
 # #####################
 # BASH PATH
 # #####################
-# rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+# Ruby
+## rbenv
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
+# export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+#
 # #####################
 # BASH PATH END
 # #####################
@@ -193,7 +196,20 @@ function git_branch {
  fi
 }
 
-export PS1="\[\e[01;32m\]\h\[\e[0m\]\[\e[01;37m\]@\[\e[0m\]\[\e[01;31m\]\u\[\e[0m\]\[\e[01;37m\]:\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[00;33m\]\w\[\e[0m\]\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\$(git_color)\]\$(git_branch)\[\033[0m\]\n$ "
+function prompt_for_user {
+  if [[ "$(id -u)" == "0" ]]; then
+    local prompt="#"
+  else
+    local prompt="$"
+  fi
+  echo "$prompt"
+}
+
+# Bash prompt
+# cuadra@t14sG6: ~/workspaces/dot-files (master)
+# 21:00:41 $
+# export prompt_if_sudo='`[ $(id -u) == "0" ] && echo "#" || echo ">"` '
+export PS1="\[\e[01;32m\]\u\[\e[0m\]\[\e[01;37m\]@\[\e[0m\]\[\e[01;31m\]\h\[\e[0m\]\[\e[01;37m\]:\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[00;33m\]\w\[\e[0m\]\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\$(git_color)\]\$(git_branch)\[\033[0m\]\n\[\$(date +%H:%M:%S)\] \[\$(prompt_for_user)\] "
 export CLICOLOR=1
 
 ### Added by the Heroku Toolbelt
@@ -206,3 +222,10 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# zoxide
+eval "$(zoxide init bash)"
+
+# asdf
+# . /opt/asdf-vm/asdf.sh
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+. <(asdf completion bash)
