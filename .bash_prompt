@@ -82,5 +82,6 @@ function prompt_for_user {
 # cuadra@t14sG6: ~/workspaces/dot-files (master)
 # 21:00:41 $
 # export prompt_if_sudo='`[ $(id -u) == "0" ] && echo "#" || echo ">"` '
-export PS1="\[\e[01;32m\]\u\[\e[0m\]\[\e[01;37m\]@\[\e[0m\]\[\e[01;31m\]\h\[\e[0m\]\[\e[01;37m\]:\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[00;33m\]\w\[\e[0m\]\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\$(git_color)\]\$(git_branch)\[\033[0m\]\n\[\$(date +%H:%M:%S)\] \[\$(prompt_for_user)\] "
+# export PS1="\[\e[01;32m\]\u\[\e[0m\]\[\e[01;37m\]@\[\e[0m\]\[\e[01;31m\]\h\[\e[0m\]\[\e[01;37m\]:\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[00;33m\]\w\[\e[0m\]\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\$(git_color)\]\$(git_branch)\[\033[0m\]\n\[\$(date +%H:%M:%S)\] \[\$(prompt_for_user)\] "
+export PS1="\[\e[01;32m\]\u\[\e[0m\]\[\e[01;37m\]@\[\e[0m\]\[\e[01;31m\]\h\[\e[0m\]\[\e[01;37m\]:\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[00;33m\]\w\[\e[0m\]\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\$(git_color)\]\$(git_branch)\[\033[0m\]\n"
 export CLICOLOR=1
