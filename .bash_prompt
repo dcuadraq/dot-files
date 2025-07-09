@@ -22,16 +22,16 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
+# if [ "$color_prompt" = yes ]; then
+    # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+# else
+    # PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+# fi
 unset color_prompt force_color_prompt
 
 # Git Branch
 source $DOTFILESDIR/git-prompt.sh
-PS1='[\u@\h \W$(__git_ps1 " (%s)")]\n$ '
+# PS1='\u@\h \W$(__git_ps1 " (%s)")\n$ '
 
 COLOR_RED="\033[0;31m"
 COLOR_YELLOW="\033[0;33m"
@@ -79,9 +79,7 @@ function prompt_for_user {
 }
 
 # Bash prompt
-# cuadra@t14sG6: ~/workspaces/dot-files (master)
-# 21:00:41 $
 # export prompt_if_sudo='`[ $(id -u) == "0" ] && echo "#" || echo ">"` '
-# export PS1="\[\e[01;32m\]\u\[\e[0m\]\[\e[01;37m\]@\[\e[0m\]\[\e[01;31m\]\h\[\e[0m\]\[\e[01;37m\]:\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[00;33m\]\w\[\e[0m\]\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\$(git_color)\]\$(git_branch)\[\033[0m\]\n\[\$(date +%H:%M:%S)\] \[\$(prompt_for_user)\] "
-export PS1="\[\e[01;32m\]\u\[\e[0m\]\[\e[01;37m\]@\[\e[0m\]\[\e[01;31m\]\h\[\e[0m\]\[\e[01;37m\]:\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[00;33m\]\w\[\e[0m\]\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\$(git_color)\]\$(git_branch)\[\033[0m\]\n"
+export PS0="[\t]\n"
+export PS1="\[\e[01;32m\]\u\[\e[0m\]\[\e[01;37m\]@\[\e[0m\]\[\e[01;31m\]\h\[\e[0m\]\[\e[01;37m\]:\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[00;33m\]\w\[\e[0m\]\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\$(git_color)\]\$(git_branch)\[\033[0m\]\n[\t]\$ "
 export CLICOLOR=1

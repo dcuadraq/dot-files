@@ -141,19 +141,23 @@ glyph_offset          = { x = 0, y = 0 }
 #semantic_escape_chars = ",│‘|:"' ()[]{}<>t"
 save_to_clipboard     = true
 
-[cursor.style]
-# shape                 = "Beam"
-# blinking              = "Always"
-
-[cursor.vi_mode_style]
-# shape                 = "Block"
+# [cursor]
+# shape = "Beam"
+# style = { shape = "Beam", blinking = "Always" }
+# [cursor.style]
+#   shape                 = "Block"
+#   blinking              = "Always"
+# vi_mode_style = { shape = "Block" }
+# vi_mode_style = "Block"
+# [cursor.vi_mode_style]
+# shape = "Block"
 # blinking              = "Off"
 
-[cursor]
+# [cursor]
 # blink_interval        = 500
 # blink_timeout         = 0
-#unfocused_hollow      = true
-#thickness             = 0.15
+# unfocused_hollow      = true
+# thickness             = 0.15
 
 [terminal]
 #osc52                 = "OnlyCopy"
