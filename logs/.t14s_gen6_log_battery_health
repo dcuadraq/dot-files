@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# file /sys/class/power_supply/BAT0/energy_full
+# file /sys/class/power_supply/BAT0/energy_full_design
+
+timestamp=$(date '+%Y-%m-%d %H:%M')
+
+# Read current full charge capacity
+current_full=$(cat /sys/class/power_supply/BAT0/energy_full 2>/dev/null || cat /sys/class/power_supply/BAT0/charge_full)
+
+# Read design capacity
+design_full=$(cat /sys/class/power_supply/BAT0/energy_full_design 2>/dev/null || cat /sys/class/power_supply/BAT0/charge_full_design)
+
+# Calculate wear level (percentage)
+wear=$(awk "BEGIN {printf \"%.2f\", (1 - $current_full / $design_full) * 100}")
+health=$(awk "BEGIN {printf \"%.2f\", (100 - $wear)}")
+
+# Append to CSV
+echo "$timestamp,$design_full,$current_full,$wear%,$health%" >> ~/workspaces/dot-files/logs/t14s_gen6_battery_health.csv
