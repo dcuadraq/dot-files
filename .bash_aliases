@@ -13,9 +13,9 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='exa -la'
 alias la='ls -A'
-alias l='ls -CF'
+alias l='exa -a'
 
 alias trim='sudo fstrim -v /'
 
@@ -68,3 +68,5 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias cat="bat -p"
 alias zz="z -"
 alias cd="z"
+
+alias file_space_usage="du -hsc *"
