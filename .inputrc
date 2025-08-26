@@ -1,8 +1,10 @@
+# INPUTRC=/dev/null irb
 set editing-mode vi
 set keymap vi-command
 
 # different cursor for insert and normal modes
 set show-mode-in-prompt on
+# commented to fix IRB
 # block for normal mode
 set vi-cmd-mode-string "\1\e[2 q\2"
 # Beam for insert mode

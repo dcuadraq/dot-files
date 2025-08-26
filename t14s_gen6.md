@@ -10,3 +10,6 @@ blueberry # bluetooth
 /etc/tp-battery-mode.conf
 > START_THRESHOLD=85
 > STOP_THRESHOLD=90
+
+### Power management
+tlp or power-profiles-daemon

@@ -23,7 +23,9 @@ alias trim='sudo fstrim -v /'
 alias refresh='source ~/.bash_profile'
 alias list_commands='compgen -c'
 alias list_functions='compgen -A function'
+alias tmux_list_user_bindings='comm -23 <(tmux list-keys | sort) <(tmux -L test -f /dev/null list-keys | sort)'
 alias rgf='rg --files | rg'
+alias yayf="yay -Slq | fzf --multi --preview 'yay -Sii {1}' --preview-window=down:75% | xargs -ro yay -S"
 
 ## Rails dev aliases
 alias be='bundle exec'
@@ -33,12 +35,15 @@ alias brt='bin/rails test'
 alias brc='bin/rails console'
 alias brs='bin/rails server'
 alias nv='nvim +GFiles'
+alias irb='INPUTRC=~/workspaces/dot-files/.inputrc.irb irb'
 alias ctags_gen='ctags -R --languages=ruby --exclude=.git --exclude=log --exclude=tmp . $(bundle list --paths)'
 
 ## Git alias
 alias g='git'
 alias gs='git status'
 alias glog='git log --oneline --graph --decorate --date=relative --all'
+alias gloda='git log --oneline --graph --date=short --decorate --all --pretty=format:"%C(auto) %h %C(green)(%ad)%C(auto) %C(blue)[%ae]%C(auto) %d %s"'
+alias glod='git log --oneline --graph --date=short --decorate --all --pretty=format:"%C(auto) %h %C(green)(%ad)%C(auto) %d %s"'
 alias gd='git diff'
 alias gf='git fetch origin master'
 alias gfm='git fetch origin master:master'

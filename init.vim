@@ -16,19 +16,16 @@ set wildmode=longest,list   " get bash-like tab completions
 set cc=80                   " column mark
 set cursorcolumn            " highlight for current column
 set list                    " highlight trailing whitespace and tabs
-set conceallevel=1          " might not be needed
 set nowrap                  " disables word wrap
 set cursorline              " highlights current line
 set conceallevel=0          " display quotes on JSON
-
-
 
 " Space as leader key
 let mapleader = "\<Space>"
 " let localmapleader = "\<Space>"
 nnoremap <leader>f :Files <cr>
 nnoremap <leader>t :Tags <cr>
-nnoremap <leader>s :Ag <cr>
+nnoremap <leader>s :Rg <cr>
 nnoremap <leader>w :W <cr>
 nnoremap <leader>q :ChooseWin <cr>
 nnoremap <leader>e :Explore <cr>
@@ -189,7 +186,7 @@ call plug#begin()
   " Plug 'psliwka/vim-smoothie'
 
   " Context
-  Plug 'wellle/context.vim'
+  " Plug 'wellle/context.vim'
 
   " JSX
   Plug 'MaxMEllon/vim-jsx-pretty'
@@ -208,7 +205,6 @@ call plug#end()
 " ******************
 " higlight for JS files
 let g:jsx_ext_required = 0
-
 
 " ******************
 " tomasiser/vim-code-dark config
