@@ -1,0 +1,4 @@
+ #!/bin/bash
+
+# backup
+rsync -aAvxXh --progress --delete --exclude={/home/cuadra/.cache/,/home/cuadra/.asdf/installs/,/home/cuadra/ds923_plus/,/home/cuadra/.docker/desktop/vms/} / /home/cuadra/ds923_plus/backups/t14s_gen6/rsync/

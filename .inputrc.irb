@@ -1,0 +1,5 @@
+set editing-mode vi
+set keymap vi-command
+
+# different cursor for insert and normal modes
+set show-mode-in-prompt on
